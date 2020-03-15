@@ -63,9 +63,11 @@ while True:
 
   if navigator == 'Classic':
     lives = 1
+    indicator = 'C'
     break
   elif navigator == 'Lives':
     lives = 3
+    indicator = 'L'
     break
   else:
     continue
@@ -156,6 +158,7 @@ if speed < 0.0666:
 else:
   print(f"Game Over. Your score was: {points}")
 print (f"Your speed was: {speed}")
+print ("Gamemode: " + indicator)
 print ("Press enter to exit")
 exit = input()
 quit()
