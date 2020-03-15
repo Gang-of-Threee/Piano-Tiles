@@ -15,58 +15,26 @@ if not os.path.isfile('recorder.wav'):
   time.sleep(0.5)
   os.system('cls')
 
-scale = 440
-ratio = 1.05946
-notes = {'C': -9,
-         'C#': -8,
-         'D': -7,
-         'D#': -6,
-         'E': -5,
-         'F': -4,
-         'F#':-2,
-         'G': -2,
-         'G#': -1,
-         'A': -13,
-         'A#': 1,
-         'B': 2}
-
-tempered_notes = {}
-
-for note in notes:
-    freq = scale * ratio ** notes.get(note)
-    tempered_notes[note] = int(freq)
-
-def play_note(note, duration=500):
-    winsound.Beep(tempered_notes.get(note), duration)
-
-'''song = "E E F G G F E D C C D E E D D"
-for note in song.split():
-    play_note(note)'''
-
 def key1():
   if keyboard.is_pressed('1'):
-    #play_note('A')
     return True
   else:
     return False
 
 def key2():
   if keyboard.is_pressed('2'):
-    #play_note('C')
     return True
   else:
     return False
 
 def key3():
   if keyboard.is_pressed('3'):
-    #play_note('F')
     return True
   else:
     return False
 
 def key4():
   if keyboard.is_pressed('4'):
-    #play_note('G')
     return True
   else:
     return False
@@ -143,10 +111,8 @@ if navigator == 'Classic' or 'Lives':
         tiles[i] = ""
     if skip > 0:
       skip = skip - 1
-      #print(str(skip) + "Are you hallucinating")
     else:
       skip = -1
-    #print("hallucinations")
       x = random.randrange ( 1 , 10 )
     if x == 1:
         tiles[22] = ("▉______________▉               ▉               ▉               ▉")
@@ -193,4 +159,3 @@ print (f"Your speed was: {speed}")
 print ("Press enter to exit")
 exit = input()
 quit()
-
