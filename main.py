@@ -1,28 +1,61 @@
+import winsound
 import os
 import time
 import random
 import keyboard
 
+scale = 440
+ratio = 1.05946
+notes = {'C': -9,
+         'C#': -8,
+         'D': -7,
+         'D#': -6,
+         'E': -5,
+         'F': -4,
+         'F#':-2,
+         'G': -2,
+         'G#': -1,
+         'A': -13,
+         'A#': 1,
+         'B': 2}
+
+tempered_notes = {}
+
+for note in notes:
+    freq = scale * ratio ** notes.get(note)
+    tempered_notes[note] = int(freq)
+
+def play_note(note, duration=500):
+    winsound.Beep(tempered_notes.get(note), duration)
+
+'''song = "E E F G G F E D C C D E E D D"
+for note in song.split():
+    play_note(note)'''
+
 def key1():
   if keyboard.is_pressed('1'):
+    play_note('A')
     return True
   else:
     return False
 
 def key2():
   if keyboard.is_pressed('2'):
+    play_note('C')
     return True
   else:
     return False
 
 def key3():
   if keyboard.is_pressed('3'):
+    play_note('F')
     return True
   else:
     return False
 
 def key4():
   if keyboard.is_pressed('4'):
+    play_note('G')
     return True
   else:
     return False
@@ -62,7 +95,7 @@ if navigator == 'Classic' or 'Lives':
   points = 10
   speed = 10/points
   tiles = []
-  for i in range(28):
+  for i in range(23):
     tiles.append("▉              ▉               ▉               ▉               ▉")
 
 
@@ -103,34 +136,35 @@ if navigator == 'Classic' or 'Lives':
     #print("hallucinations")
       x = random.randrange ( 1 , 10 )
     if x == 1:
-        tiles[27] = ("▉______________▉               ▉               ▉               ▉")
+        tiles[22] = ("▉______________▉               ▉               ▉               ▉")
         if skip < 0:
           skip = 5
 
     elif x == 2:
-      tiles[27] = ("▉              ▉_______________▉               ▉               ▉")
+      tiles[22] = ("▉              ▉_______________▉               ▉               ▉")
       if skip < 0:
         skip = 5
 
     elif x == 3:
-      tiles[27] = ("▉              ▉               ▉_______________▉               ▉")
+      tiles[22] = ("▉              ▉               ▉_______________▉               ▉")
       if skip < 0:
         skip = 5
 
     elif x == 4:
-      tiles[27] = ("▉              ▉               ▉               ▉_______________▉")
+      tiles[22] = ("▉              ▉               ▉               ▉_______________▉")
       if skip < 0:
         skip = 5
 
     else:
-      tiles[27] = ("▉              ▉               ▉               ▉               ▉")
+      tiles[22] = ("▉              ▉               ▉               ▉               ▉")
 
     os.system('cls')
+    #print("\n")
     for i in range(len(tiles)):
       print(tiles[i])
     print(f"\nPoints: {points}")
-    print(f"Speed: {speed}")
-    print(f"Live(s):{lives}")
+    print(f"\nSpeed {speed}")
+    print(f"\nLive(s):{lives}")
     try:
         speed = 10/points
     except:
@@ -146,3 +180,4 @@ print (f"Your speed was: {speed}")
 print ("Press enter to exit")
 exit = input()
 quit()
+
