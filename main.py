@@ -3,6 +3,17 @@ import os
 import time
 import random
 import keyboard
+import requests
+
+if not os.path.isfile('recorder.wav'):
+  print("Downloading file...")
+  url = 'https://github.com/Gang-of-Threee/Piano-Tiles/raw/master/recorder.wav'
+  r = requests.get(url)
+  with open('recorder.wav', 'wb') as f:
+      f.write(r.content)
+  print("Done!")
+  time.sleep(0.5)
+  os.system('cls')
 
 scale = 440
 ratio = 1.05946
@@ -34,28 +45,28 @@ for note in song.split():
 
 def key1():
   if keyboard.is_pressed('1'):
-    play_note('A')
+    #play_note('A')
     return True
   else:
     return False
 
 def key2():
   if keyboard.is_pressed('2'):
-    play_note('C')
+    #play_note('C')
     return True
   else:
     return False
 
 def key3():
   if keyboard.is_pressed('3'):
-    play_note('F')
+    #play_note('F')
     return True
   else:
     return False
 
 def key4():
   if keyboard.is_pressed('4'):
-    play_note('G')
+    #play_note('G')
     return True
   else:
     return False
@@ -100,6 +111,8 @@ if navigator == 'Classic' or 'Lives':
 
 
   skip = -1
+
+  winsound.PlaySound("recorder.wav", winsound.SND_ASYNC)
   while lives > 0:
     if tiles[0] == "▉              ▉               ▉               ▉               ▉" and key_list() == 0:
       #points += 1
@@ -159,7 +172,6 @@ if navigator == 'Classic' or 'Lives':
       tiles[22] = ("▉              ▉               ▉               ▉               ▉")
 
     os.system('cls')
-    #print("\n")
     for i in range(len(tiles)):
       print(tiles[i])
     print(f"\nPoints: {points}")
@@ -172,6 +184,7 @@ if navigator == 'Classic' or 'Lives':
     if speed <= 0:
         speed = 1
     time.sleep (speed)
+winsound.PlaySound(None, winsound.SND_ASYNC)
 if speed < 0.0666:
   print(f"You win. Your score was: {points}")
 else:
