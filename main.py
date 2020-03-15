@@ -129,8 +129,8 @@ if navigator == 'Classic' or 'Lives':
     for i in range(len(tiles)):
       print(tiles[i])
     print(f"\nPoints: {points}")
-    print(f"\nSpeed {speed}")
-    print(f"\nLive(s):{lives}")
+    print(f"Speed: {speed}")
+    print(f"Live(s):{lives}")
     try:
         speed = 10/points
     except:
